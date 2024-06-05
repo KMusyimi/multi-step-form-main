@@ -122,7 +122,7 @@ a {
 }
 .form_sidebar .steps_list li span {
   font-family: 'Ubuntu bold', sans-serif;
-  font-size: .9rem;
+  font-size: 0.9rem;
   background-color: transparent;
   color: var(--white);
   border-radius: 50%;
@@ -152,8 +152,6 @@ a {
   padding: 1.45em 1.25em 1em;
   border-radius: 0.65em;
   box-shadow: 0px 2px 3px var(--light-gray);
-
-  /* transition: height 300ms ease-out; */
 }
 
 .form:has(> .step.active:last-of-type) {
@@ -164,7 +162,9 @@ a {
 /* TODO: later */
 .form .step {
   display: none;
-  animation: fade-in 350ms cubic-bezier(.25,.46,.45,.94) forwards;
+    opacity: 0;
+
+  animation: fade-in 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 .form .step.active {
   display: block;
@@ -613,15 +613,14 @@ a {
   .form .step .table_wrapper table:first-of-type tr:last-child {
     margin-bottom: 0.45em;
   }
-   .form .step .table_wrapper table .row-main .amt{
-     font-size: .95rem;
-     
-    }
- .form .step .table_wrapper table th footer,
+  .form .step .table_wrapper table .row-main .amt {
+    font-size: 0.95rem;
+  }
+  .form .step .table_wrapper table th footer,
   .form .step .table_wrapper table td:not(.amt),
   .form .step .table_wrapper table td.amt,
   .form .step .table_wrapper table .row-main th h5 {
-    font-size: .85rem;
+    font-size: 0.85rem;
   }
 
   .form .step .table_wrapper table:first-of-type .sub_plan {
@@ -647,7 +646,7 @@ a {
   }
 
   .form .step:last-of-type > p:nth-child(2) {
-    font-size: .9rem;
+    font-size: 0.9rem;
     margin: 0 auto;
   }
 }
@@ -711,7 +710,7 @@ a {
     position: static;
     border-radius: 0;
     box-shadow: none;
-    padding: 2.85em 0 ;
+    padding: 2.85em 0;
 
     grid-column: 2 / span 1;
     grid-row: 1 / span 1;
@@ -724,8 +723,8 @@ a {
     margin-bottom: 1.8em;
   }
   .form .step table .row-main th .change:hover {
-  color: var(--purplish-blue);
-}
+    color: var(--purplish-blue);
+  }
   .form .step:last-of-type {
     padding: 0;
   }
@@ -741,17 +740,13 @@ a {
 }
 
 @keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  50%{
-    opacity: 1;
+  0%, 50% {
     visibility: hidden;
-    
   }
-  100%{
-    opacity: 1;
+  
+  80%,
+  100% {
     visibility: visible;
-    transition: visibility 0ms linear 200ms;
+    opacity: 1;
   }
 }
