@@ -212,10 +212,10 @@ a {
   text-transform: lowercase;
   color: var(--gray);
 }
-.form input:focus {
+
+.form input:focus-visible {
   outline: 1.25px solid var(--purplish-blue);
   box-shadow: 1px 1px 3px var(--purplish-blue);
-
   border: transparent;
   transition: outline 100ms ease-out;
 }
@@ -365,7 +365,9 @@ a {
 }
 .form .step:nth-of-type(3) .input_wrapper .form-checkbox {
   outline: transparent;
-  flex: 1 1 20px;
+  flex: 0 0 20px;
+  height: 20px;
+  align-self: center;
 }
 .form .step:nth-of-type(3) .input_wrapper .form-checkbox:not(:checked) {
   box-shadow: none;
@@ -720,6 +722,9 @@ a {
   .form .step .form_header p {
     margin-bottom: 1.8em;
   }
+  .form .step table .row-main th .change:hover {
+  color: var(--purplish-blue);
+}
   .form .step:last-of-type {
     padding: 0;
   }
