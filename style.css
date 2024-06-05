@@ -164,7 +164,7 @@ a {
 /* TODO: later */
 .form .step {
   display: none;
-  animation: fade-in 550ms cubic-bezier(.25,.46,.45,.94);
+  animation: fade-in 350ms cubic-bezier(.25,.46,.45,.94) forwards;
 }
 .form .step.active {
   display: block;
@@ -744,7 +744,13 @@ a {
   0% {
     opacity: 0;
   }
+  50%{
+    opacity: 1;
+    visibility: hidden;
+    
+  }
   100%{
     opacity: 1;
+    visibility: visible;
   }
 }
