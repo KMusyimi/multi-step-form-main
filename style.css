@@ -123,6 +123,7 @@ a {
 .form_sidebar .steps_list li span {
   font-family: 'Ubuntu bold', sans-serif;
   font-size: .9rem;
+  background-color: transparent;
   color: var(--white);
   border-radius: 50%;
   padding: 0.4em;
@@ -163,7 +164,7 @@ a {
 /* TODO: later */
 .form .step {
   display: none;
-  animation: fade-in 350ms ease-out;
+  animation: fade-in 550ms cubic-bezier(.25,.46,.45,.94);
 }
 .form .step.active {
   display: block;
@@ -290,7 +291,7 @@ a {
 .form .step .input_wrapper > label .free_trial {
   display: block;
   font-size: 0.75rem;
-  animation: fade-in 250ms ease-out forwards;
+  animation: fade-in 350ms ease-out;
 }
 
 .form .step .input_wrapper input {
@@ -736,5 +737,14 @@ a {
   }
   .btn_wrapper .btn:not(.previous) {
     padding: 1em 2em;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
   }
 }
