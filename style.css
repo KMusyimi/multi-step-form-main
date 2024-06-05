@@ -660,7 +660,7 @@ a {
     background-color: var(--white);
     display: grid;
     grid-template-columns: 275px minmax(600px, 1fr);
-    grid-template-rows: minmax(430px, 2fr) 80px;
+    grid-template-rows: minmax(455px, 2fr) 80px;
     height: fit-content;
     border-radius: 0.65em;
     box-shadow: 2px 3px 1.5px var(--light-gray);
