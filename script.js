@@ -2,7 +2,6 @@ const next = document.querySelector(".next");
 const previous = document.querySelector(".previous");
 const steps = document.querySelectorAll(".step");
 const checkbox = document.querySelector("#period");
-
 const emptyField = "This field is required";
 let counter = 1;
 
@@ -25,8 +24,9 @@ function addUserSub(fName, email, phoneNumber, plan, period, addOns, total)
 window.addEventListener("load", function ()
 {
     const form = document.querySelector(".form");
+    const formWidth = form.offsetWidth; 
     form.reset();
-    
+    console.log();
     checkbox.addEventListener("change", checkBoxEvt);
 
     function stepIndicator()
@@ -57,6 +57,8 @@ window.addEventListener("load", function ()
         counter++;
 
         const nextStep = document.querySelector(`#step${counter}`);
+        nextStep.style.transform = `translateX(${formWidth}px)`;
+
         nextStep.classList.add("active");
         stepIndicator();
         updateTable();
@@ -73,8 +75,10 @@ window.addEventListener("load", function ()
         removeActiveTab(steps);
         counter--;
         stepIndicator();
+        
         const prevStep = document.querySelector(`#step${counter}`);
         prevStep.classList.add("active");
+        prevStep.style.transform = `translateX(-${formWidth}px)`;
 
         if (counter < steps.length - 1)
         {
