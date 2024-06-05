@@ -52,7 +52,7 @@ window.addEventListener("load", function ()
 
     next.addEventListener("click", function ()
     {
-        // if (!validateForm()) return;
+        if (!validateForm()) return;
         removeActiveTab(steps);
         counter++;
 

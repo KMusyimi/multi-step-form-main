@@ -122,10 +122,10 @@ a {
 }
 .form_sidebar .steps_list li span {
   font-family: 'Ubuntu bold', sans-serif;
-  font-size: 1rem;
+  font-size: .9rem;
   color: var(--white);
   border-radius: 50%;
-  padding: 0.25em;
+  padding: 0.4em;
   width: 35px;
   height: 35px;
   border: 1.2px solid var(--magnolia);
@@ -526,7 +526,7 @@ a {
   }
 
   .form_sidebar .steps_list li span {
-    padding: 0.45em;
+    padding: 0.55em;
     width: 40px;
     height: 40px;
   }
@@ -660,7 +660,7 @@ a {
     background-color: var(--white);
     display: grid;
     grid-template-columns: 275px minmax(600px, 1fr);
-    grid-template-rows: minmax(460px, 2fr) 80px;
+    grid-template-rows: minmax(430px, 2fr) 80px;
     height: fit-content;
     border-radius: 0.65em;
     box-shadow: 2px 3px 1.5px var(--light-gray);
