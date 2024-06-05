@@ -752,5 +752,6 @@ a {
   100%{
     opacity: 1;
     visibility: visible;
+    transition: visibility 0ms linear 200ms;
   }
 }
