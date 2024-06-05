@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <title>Frontend Mentor | Multi-step form</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="form_container">
+      <!-- Sidebar start -->
+      <aside class="form_sidebar">
+        <ul class="steps_list">
+          <li class="active">
+            <span>1</span>
+            <hgroup>
+              <h1>Step 1</h1>
+              <h4>Your info</h4>
+            </hgroup>
+          </li>
+          <li>
+            <span>2</span>
+            <hgroup>
+              <h1>Step 2</h1>
+              <h4>Select plan</h4>
+            </hgroup>
+          </li>
+          <li>
+            <span>3</span>
+            <hgroup>
+              <h1>Step 3</h1>
+              <h4>Add-ons</h4>
+            </hgroup>
+          </li>
+          <li>
+            <span>4</span>
+            <hgroup>
+              <h1>Step 4</h1>
+              <h4>Summary</h4>
+            </hgroup>
+          </li>
+        </ul>
+      </aside>
+      <!-- Sidebar end -->
+      <form action="#" class="form">
+        <!-- Step 1 start -->
+        <!-- TODO: add error state -->
+        <section class="step active" id="step1">
+          <header class="form_header">
+            <h1> Personal info </h1>
+            <p> Please provide your name, email address, and phone number. </p>
+          </header>
+          <label for="fname">Name </label>
+          <input type="text" id="fname" name="fname" class="form-input" placeholder="e.g. Stephen King">
+          <label for="email">Email Address</label>
+          <input type="email" name="email" id="email" class="form-input" placeholder="e.g. stephenking@example.com">
+          <label for="phone_number">Phone Number</label>
+          <input type="text" name="phone_number" id="phone_number" class="form-input" placeholder="e.g. +1 234 567 890">
+        </section>
+        <!-- Step 1 end -->
+
+        <!-- Step 2 start -->
+
+        <section class="step " id="step2">
+          <header class="form_header">
+            <h1>Select your plan</h1>
+            <p>You have the option of monthly or yearly billing.</p>
+          </header>
+          <div class="input_container">
+
+            <div class="input_wrapper">
+              <label for="arcade">
+                <input type="radio" name="sub_plan" id="arcade" class="form-radio" value="Arcade" checked>
+                <section class="plan">
+                  <h5>Arcade</h5>
+                  <!-- TODO: edit later -->
+                  <p class="price price_arcade">$9/mo</p>
+                </section>
+
+              </label>
+            </div>
+
+            <div class="input_wrapper">
+              <label for="advanced">
+                <input type="radio" name="sub_plan" id="advanced" class="form-radio" value="Advanced">
+                <section class="plan">
+                  <h5>Advanced</h5>
+                  <p class="price price_advance">$12/mo</p>
+                </section>
+
+              </label>
+            </div>
+
+            <div class="input_wrapper">
+              <label for="pro">
+                <input type="radio" name="sub_plan" id="pro" class="form-radio" value="Pro">
+                <section class="plan">
+                  <h5>Pro</h5>
+                  <p class="price price_pro">$15/mo</p>
+                </section>
+              </label>
+            </div>
+          </div>
+
+          <div class="switch_wrapper">
+            <span class="monthly">Monthly</span>
+            <label class="switch">
+              <input type="checkbox" id="period" name="period" class="switch_input">
+              <span class="switch_inner"></span>
+            </label>
+            <span class="yearly">Yearly</span>
+          </div>
+
+        </section>
+
+        <!-- Step 2 end -->
+
+        <!-- Step 3 start -->
+        <section class="step" id="step3">
+          <header class="form_header">
+            <h1>Pick add-ons </h1>
+            <p>Add-ons help enhance your gaming experience.</p>
+          </header>
+          <div class="input_wrapper">
+            <input type="checkbox" name="online_service" id="online_service" class="form-checkbox"
+              value="online_service">
+            <label for="online_service">
+              <main>
+                <h5> Online service</h5>
+                <p class="info"> Access to multiplayer games </p>
+              </main>
+              <footer>
+                <span class="price_add_ons">+$1/mo</span>
+              </footer>
+            </label>
+          </div>
+
+          <div class="input_wrapper">
+            <input type="checkbox" name="large_storage" id="large_storage" class="form-checkbox" value="large_storage">
+            <label for="large_storage">
+              <main>
+                <h5>Larger storage</h5>
+                <p class="info"> Extra 1TB of cloud save </p>
+              </main>
+              <footer>
+                <span class="price_add_ons">+$2/mo</span>
+              </footer>
+            </label>
+          </div>
+
+          <div class="input_wrapper">
+            <input type="checkbox" name="customizable_profile" id="customizable_profile" class="form-checkbox"
+              value="customizable_profile">
+            <label for="customizable_profile">
+              <main>
+                <h5> Customizable Profile </h5>
+                <p class="info"> Custom theme on your profile </p>
+              </main>
+              <footer>
+                <span class="price_add_ons">+$2/mo</span>
+              </footer>
+            </label>
+          </div>
+        </section>
+        <!-- Step 3 end -->
+
+        <!-- Step 4 start -->
+        <section class="step" id="step4">
+          <header class="form_header">
+            <h1> Finishing up </h1>
+            <p> Double-check everything looks OK before confirming. </p>
+          </header>
+          <!-- Dynamically add subscription and add-on selections here -->
+          <div class="table_wrapper">
+            <table>
+              <tbody>
+                <tr class="row row-main">
+                  <th class="sub_plan">
+                    <h5>Arcade (<span class="period">Yearly</span>)</h5>
+                    <footer>
+                      <a href="#step1" target="_self" rel="noopener noreferrer" class="change">Change</a>
+                    </footer>
+                  </th>
+                  <td class="amt">$90/yr</td>
+                </tr>
+                <tr class="row row-sec">
+                  <td class="add-on">Online service</td>
+                  <td class="amt">$10/yr</td>
+                </tr>
+                <tr class="row row-sec">
+                  <td class="add-on">Large storage</td>
+                  <td class="amt">$20/yr</td>
+                </tr>
+              </tbody>
+            </table>
+            <table>
+              <tfoot>
+                <tr class="row row-footer">
+                  <td>Total (per <span class="period">year</span>)</td>
+                  <td class="total amt">+$120/yr</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </section>
+        <!-- Step 4 end -->
+
+        <!-- Step 5 start -->
+        <section class="step" id="step5">
+          <h1> Thank you! </h1>
+          <p>
+            Thanks for confirming your subscription! We hope you have fun
+            using our platform. If you ever need support, please feel free
+            to email us at support@loremgaming.com.
+          </p>
+        </section>
+        <!-- Step 5 end -->
+      </form>
+      <div class="btn_wrapper">
+        <button class="btn previous">Go Back</button>
+        <button class="btn next">Next Step</button>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  </div>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+</body>
+
+</html>

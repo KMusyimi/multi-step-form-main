@@ -1,0 +1,735 @@
+@font-face {
+  font-family: 'Ubuntu';
+  src: url(assets/fonts/Ubuntu-Regular.ttf);
+}
+@font-face {
+  font-family: 'Ubuntu medium';
+  src: url(assets/fonts/Ubuntu-Medium.ttf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Ubuntu bold';
+  src: url(assets/fonts/Ubuntu-Bold.ttf);
+  font-weight: 700;
+}
+
+:root {
+  --marine-blue: hsl(213, 96%, 18%);
+  --purplish-blue: hsl(243, 100%, 62%);
+  --pastel-blue: hsl(228, 100%, 84%);
+  --light-blue: hsl(206, 94%, 87%);
+  --strawberry-red: hsl(354, 84%, 57%);
+
+  --cool-gray: hsl(231, 11%, 63%);
+  --light-gray: hsl(229, 24%, 87%);
+  --gray: hsl(0, 0%, 31%);
+
+  --magnolia: hsl(217, 100%, 97%);
+  --alabaster: hsl(231, 100%, 99%);
+  --white: hsl(0, 0%, 100%);
+}
+
+html {
+  box-sizing: border-box;
+  font-synthesis: none;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  padding: unset;
+  margin: unset;
+}
+
+body {
+  font-family: 'Ubuntu', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+button,
+input {
+  display: block;
+  font-family: 'Ubuntu', sans-serif;
+}
+button:active {
+  scale: 0.988;
+  transition: scale 200ms ease-out;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+  color: var(--marine-blue);
+}
+
+h1 {
+  font-family: 'Ubuntu bold', sans-serif;
+  font-weight: 700;
+}
+li {
+  list-style: none;
+}
+a {
+  color: inherit;
+}
+
+.container {
+  display: flex;
+  height: 100dvh;
+  width: 100dvw;
+  background-color: var(--magnolia);
+}
+
+.form_container {
+  position: relative;
+}
+.form_container:has(.step.active:nth-of-type(1)) .previous {
+  display: none;
+}
+.form_container .form_sidebar {
+  position: relative;
+  background-image: url(assets/images/bg-sidebar-mobile.svg);
+  background-size: cover;
+  height: 47vmin;
+  width: 100dvw;
+}
+
+.form_sidebar .steps_list {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  top: 10vmin;
+  gap: 1.25em;
+}
+.form_sidebar .steps_list li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  font-size: 0.85rem;
+}
+.form_sidebar .steps_list li span {
+  font-family: 'Ubuntu bold', sans-serif;
+  font-size: 1rem;
+  color: var(--white);
+  border-radius: 50%;
+  padding: 0.25em;
+  width: 35px;
+  height: 35px;
+  border: 1.2px solid var(--magnolia);
+  transition: color 150ms linear, background-color 150ms linear;
+}
+.form_sidebar .steps_list li.active span {
+  background-color: var(--light-blue);
+  color: var(--marine-blue);
+  border-color: var(--pastel-blue);
+}
+.form_sidebar .steps_list li > hgroup {
+  display: none;
+}
+
+.form {
+  --width: min(90%, 655px);
+
+  position: absolute;
+  background-color: var(--white);
+  width: var(--width);
+  top: 26.5vmin;
+  left: calc((100% - var(--width)) / 2);
+  padding: 1.45em 1.25em 1em;
+  border-radius: 0.65em;
+  box-shadow: 0px 2px 3px var(--light-gray);
+
+  /* transition: height 300ms ease-out; */
+}
+
+.form:has(> .step.active:last-of-type) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* TODO: later */
+.form .step {
+  display: none;
+  animation: fade-in 350ms ease-out;
+}
+.form .step.active {
+  display: block;
+}
+.form label,
+.form input {
+  display: block;
+  width: 100%;
+}
+.form label {
+  font-size: 0.82rem;
+}
+.form label:has(> .error_state) {
+  display: flex;
+  justify-content: space-between;
+}
+.form label:has(> .error_state) + input {
+  border-color: var(--strawberry-red);
+}
+.form label:has(> .error_state) + input:focus-visible {
+  outline: 1.2px solid var(--strawberry-red);
+  box-shadow: 1px 1px 3px var(--strawberry-red);
+}
+.form input,
+.form label > .error_state {
+  font-family: 'Ubuntu medium', sans-serif;
+}
+
+.form label > .error_state {
+  color: var(--strawberry-red);
+}
+
+.form #fname {
+  text-transform: capitalize;
+}
+
+.form input {
+  font-size: 0.9rem;
+  color: var(--marine-blue);
+  border: 1.25px solid var(--light-gray);
+  padding: 0.75em 0.9em;
+  border-radius: 0.25em;
+  margin-bottom: 0.85em;
+}
+.form input::placeholder {
+  text-transform: lowercase;
+  color: var(--gray);
+}
+.form input:focus {
+  outline: 1.25px solid var(--purplish-blue);
+  box-shadow: 1px 1px 3px var(--purplish-blue);
+
+  border: transparent;
+  transition: outline 100ms ease-out;
+}
+.form .step .form_header h1 {
+  font-size: 1.55rem;
+  margin-bottom: 0.55em;
+}
+.form .step .form_header p {
+  color: var(--cool-gray);
+  font-size: 0.85rem;
+  margin-bottom: 0.87em;
+}
+.form .step .input_wrapper {
+  user-select: none;
+  scale: 1;
+  border: 1.2px solid var(--light-gray);
+  border-radius: 0.55em;
+  margin-bottom: 0.65em;
+  transition: scale 150ms ease-in;
+}
+
+.form .step .input_wrapper:has(:checked),
+.form .step .input_wrapper:hover {
+  border-color: var(--purplish-blue);
+  scale: 1.011;
+}
+.form .step .input_wrapper:has(:checked) {
+  background-color: var(--magnolia);
+}
+.form .step:nth-of-type(2) .input_wrapper:nth-of-type(3) {
+  margin-bottom: 1.25em;
+}
+.form .step .input_wrapper > label::before {
+  display: block;
+  align-self: start;
+  content: '';
+  background-image: var(--url);
+  background-size: cover;
+  width: 35px;
+  height: 35px;
+}
+.form .step .input_wrapper > label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  padding: 0.85em;
+  height: fit-content;
+  gap: 0.85em;
+}
+.form .step .input_wrapper:nth-of-type(1) > label {
+  --url: url(assets/images/icon-arcade.svg);
+}
+.form .step .input_wrapper:nth-of-type(2) > label {
+  --url: url(assets/images/icon-advanced.svg);
+}
+.form .step .input_wrapper:nth-of-type(3) > label {
+  --url: url(assets/images/icon-pro.svg);
+}
+.form .step .input_wrapper .form-radio {
+  width: 0;
+  position: absolute;
+  visibility: hidden;
+  appearance: none;
+  outline: transparent;
+}
+.form .step .input_wrapper > label h5 {
+  font-family: 'Ubuntu medium', sans-serif;
+  font-size: 0.85rem;
+}
+
+.form .step .input_wrapper > label .free_trial {
+  display: block;
+  font-size: 0.75rem;
+  animation: fade-in 250ms ease-out forwards;
+}
+
+.form .step .input_wrapper input {
+  margin-bottom: 0;
+}
+.form .step .input_wrapper > label .price {
+  color: var(--cool-gray);
+}
+.form .step .switch_wrapper {
+  background-color: var(--magnolia);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6em;
+  margin-bottom: 0.85em;
+}
+.form .step .switch_wrapper > span {
+  font-family: 'Ubuntu medium', sans-serif;
+
+  font-size: 0.85rem;
+}
+.form .switch_wrapper:has(.switch_input:not(:checked)) > span:nth-of-type(2),
+.form .switch_wrapper:has(.switch_input:checked) > span:nth-of-type(1) {
+  color: var(--cool-gray);
+}
+.form .step .switch {
+  flex: 0 0 100px;
+  position: relative;
+  user-select: none;
+}
+
+.form .step .switch .switch_input {
+  background-color: var(--marine-blue);
+
+  appearance: none;
+  outline: transparent;
+  width: 2.95em;
+  border-radius: 1.6em;
+  border: none;
+  margin: 0 auto;
+}
+
+.form .step .switch .switch_inner::before {
+  background-color: var(--white);
+  display: block;
+  content: '';
+  height: 100%;
+  width: 100%;
+  transform: translate3d(calc(-2.75em / 2), 0, 0);
+  border-radius: inherit;
+  transition: transform 120ms linear;
+}
+.form .step .switch .switch_inner {
+  position: absolute;
+  top: 3px;
+  left: calc((100% - (2.95em - 5px)) / 2);
+
+  height: calc(100% - 6px);
+  width: calc(2.95em - 5px);
+
+  overflow: hidden;
+  border-radius: 1.25em;
+}
+.form .step .switch_input:checked ~ .switch_inner::before {
+  transform: translate3d(calc(2.75em / 2), 0, 0);
+}
+
+.form .step:nth-of-type(3) .input_wrapper {
+  display: flex;
+  gap: 1em;
+  padding-inline-start: 0.85em;
+}
+.form .step:nth-of-type(3) .input_wrapper .form-checkbox {
+  outline: transparent;
+  flex: 1 1 20px;
+}
+.form .step:nth-of-type(3) .input_wrapper .form-checkbox:not(:checked) {
+  box-shadow: none;
+}
+.form .step:nth-of-type(3) .input_wrapper label::before {
+  display: none;
+}
+.form .step:nth-of-type(3) .input_wrapper label {
+  display: flex;
+  justify-content: space-between;
+}
+.form .step:nth-of-type(3) .input_wrapper label h5 {
+  font-size: 0.9rem;
+}
+.form .step:nth-of-type(3) .input_wrapper label .info {
+  color: var(--cool-gray);
+  font-size: 0.75rem;
+}
+.form .step:nth-of-type(3) .input_wrapper label span {
+  color: var(--purplish-blue);
+}
+.form:has(> .step:nth-of-type(4).active) ~ .btn_wrapper .btn:not(.previous) {
+  background-color: var(--purplish-blue);
+}
+
+.form .step .table_wrapper table {
+  padding: 0.55em 0.85em;
+  width: 100%;
+}
+.form .step .table_wrapper table:first-of-type {
+  background-color: var(--magnolia);
+  border-radius: 0.65em;
+  margin-bottom: 0.85em;
+}
+
+.form .step .table_wrapper table:first-of-type tr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.35em;
+}
+.form .step .table_wrapper table:first-of-type tr:last-child {
+  margin-bottom: 0;
+}
+.form .step .table_wrapper table tbody {
+  color: var(--marine-blue);
+}
+.form .step .table_wrapper table th footer,
+.form .step .table_wrapper table td:not(.amt),
+.form .step .table_wrapper table td.amt {
+  font-size: 0.85rem;
+}
+
+.form .step .table_wrapper table th footer,
+.form .step .table_wrapper table td:not(.amt) {
+  color: var(--cool-gray);
+}
+
+.form .step .table_wrapper table th {
+  text-align: left;
+}
+.form .step .table_wrapper table td.amt {
+  text-align: right;
+  color: var(--marine-blue);
+}
+
+.form .step .table_wrapper table .row-main,
+.form .step .table_wrapper table th footer {
+  margin-bottom: 0.55em;
+}
+
+.form .step .table_wrapper table .row-main {
+  border-bottom: 1.2px solid var(--light-gray);
+}
+
+.form .step .table_wrapper table .row-main th h5 {
+  font-family: 'Ubuntu medium', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.form .step .table_wrapper table .row-main th footer {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400;
+}
+
+.form .step .table_wrapper table tfoot .amt,
+.form .step .table_wrapper table .row-main .amt {
+  font-family: 'Ubuntu bold', sans-serif;
+  font-weight: 700;
+}
+.form .step .table_wrapper table .row-main .amt {
+  font-size: 0.85rem;
+}
+.form .step .table_wrapper table tfoot .amt {
+  color: var(--purplish-blue);
+  font-size: 0.95rem;
+}
+.form .step:last-of-type {
+  text-align: center;
+  padding: 3em 1em;
+}
+.form .step:last-of-type::before {
+  display: block;
+  content: '';
+  background-image: url(assets/images/icon-thank-you.svg);
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+
+  margin: 0 auto 0.8em;
+}
+.form .step:last-of-type h1 {
+  margin-bottom: 0.35em;
+}
+
+.form .step:last-of-type p {
+  font-size: 0.9rem;
+  color: var(--cool-gray);
+}
+.form:has(> .step:last-of-type.active) ~ .btn_wrapper {
+  display: none;
+}
+.btn_wrapper {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--white);
+  padding: 1em 1.15em;
+}
+
+.btn_wrapper .btn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  font-size: 0.85rem;
+  color: var(--cool-gray);
+}
+.btn_wrapper .btn:not(.previous) {
+  background-color: var(--marine-blue);
+  color: var(--white);
+  padding: 0.85em;
+  border-radius: 0.55em;
+  margin-left: auto;
+}
+
+@media only screen and (min-width: 600px) {
+  .form_container .form_sidebar {
+    height: 55vmin;
+  }
+
+  .form_sidebar .steps_list {
+    top: 15vmin;
+  }
+
+  .form_sidebar .steps_list li span {
+    padding: 0.45em;
+    width: 40px;
+    height: 40px;
+  }
+
+  .form {
+    top: 32.5vmin;
+  }
+
+  .form .step .form_header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.65em;
+  }
+
+  .form .step .form_header p {
+    font-size: 0.9rem;
+    margin-bottom: 1em;
+  }
+
+  .form {
+    padding: 2.5em 1.95em;
+  }
+
+  .form .step > header {
+    margin-bottom: 0.5em;
+  }
+
+  #step1 > label {
+    margin-bottom: 0.35em;
+  }
+
+  .form #step1 input {
+    padding: 0.95em 1em;
+    margin-bottom: 1.5em;
+  }
+  .form #step1 input:last-child {
+    margin-bottom: 0;
+  }
+  .form .input_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-rows: minmax(125px, 1fr);
+    gap: 1em;
+    margin-bottom: 1em;
+  }
+  .form .step:nth-of-type(2) .input_wrapper {
+    height: 10em;
+  }
+  .form .step:nth-of-type(2) .input_wrapper > label::before {
+    width: 45px;
+    height: 45px;
+  }
+  .form .step:nth-of-type(2) .input_wrapper > label {
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    height: inherit;
+    padding: 1em;
+    gap: 2em;
+  }
+  .form .step:nth-of-type(2) .input_wrapper label section {
+    width: inherit;
+    margin-bottom: 0.25em;
+  }
+
+  .form .step:nth-of-type(3) .input_wrapper {
+    padding-inline-start: 1.55em;
+    margin-bottom: 0.95em;
+  }
+  .form .step:nth-of-type(3) .input_wrapper:last-of-type {
+    margin-bottom: 0;
+  }
+  .form .step:nth-of-type(3) .input_wrapper > label {
+    padding: 1.35em 1.55em;
+  }
+
+  .form .step .table_wrapper table:first-of-type {
+    margin-bottom: 1.25em;
+  }
+  .form .step .table_wrapper table:first-of-type tr {
+    margin-bottom: 0.85em;
+  }
+
+  .form .step .table_wrapper table:first-of-type tr:last-child {
+    margin-bottom: 0.45em;
+  }
+   .form .step .table_wrapper table .row-main .amt{
+     font-size: .95rem;
+     
+    }
+ .form .step .table_wrapper table th footer,
+  .form .step .table_wrapper table td:not(.amt),
+  .form .step .table_wrapper table td.amt,
+  .form .step .table_wrapper table .row-main th h5 {
+    font-size: .85rem;
+  }
+
+  .form .step .table_wrapper table:first-of-type .sub_plan {
+    margin-bottom: 0.35em;
+  }
+
+  .form .step .table_wrapper table tfoot .amt {
+    font-size: 1rem;
+  }
+
+  .form .step:last-of-type::before {
+    width: 60px;
+    height: 60px;
+    width: 9vmin;
+    height: 9vmin;
+    margin: 0 auto 1.5em;
+  }
+  .form .step:last-of-type {
+    padding: 4em 3em;
+  }
+  .form .step:last-of-type h1 {
+    font-size: 2rem;
+  }
+
+  .form .step:last-of-type > p:nth-child(2) {
+    font-size: .9rem;
+    margin: 0 auto;
+  }
+}
+@media only screen and (min-width: 1080px) {
+  .container {
+    align-items: center;
+    justify-content: center;
+  }
+  .form_container {
+    padding: 0.8em;
+    background-color: var(--white);
+    display: grid;
+    grid-template-columns: 275px minmax(600px, 1fr);
+    grid-template-rows: minmax(460px, 2fr) 80px;
+    height: fit-content;
+    border-radius: 0.65em;
+    box-shadow: 2px 3px 1.5px var(--light-gray);
+    max-width: 900px;
+  }
+  .form_container form,
+  .form_container form + div {
+    width: 70%;
+    align-self: center;
+    justify-self: center;
+  }
+  .form_container .form_sidebar {
+    background-image: url(assets/images/bg-sidebar-desktop.svg);
+    background-size: cover;
+    height: min(100%, 578px);
+    width: 100%;
+    border-radius: 0.65em;
+    grid-row: 1 / span 2;
+    grid-column: span 1;
+  }
+  .form_container .form_sidebar .steps_list {
+    position: static;
+    flex-direction: column;
+    align-items: start;
+    padding: 2.55em 0 0 2em;
+    gap: 1.55em;
+  }
+  .form_sidebar .steps_list li > hgroup {
+    display: block;
+    text-align: left;
+    text-transform: uppercase;
+    padding-left: 1em;
+  }
+  .form_sidebar .steps_list li > hgroup h1 {
+    font-family: 'Ubuntu', sans-serif;
+
+    font-size: 0.85rem;
+    color: var(--light-gray);
+  }
+  .form_sidebar .steps_list li > hgroup h4 {
+    font-family: 'Ubuntu bold', sans-serif;
+    font-size: 0.9rem;
+    color: var(--white);
+  }
+
+  .form {
+    position: static;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 2.85em 0 ;
+
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+  }
+
+  .form .step .form_header h1 {
+    margin-bottom: 0.15em;
+  }
+  .form .step .form_header p {
+    margin-bottom: 1.8em;
+  }
+  .form .step:last-of-type {
+    padding: 0;
+  }
+  .btn_wrapper {
+    padding-inline: 0;
+    position: static;
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+  }
+  .btn_wrapper .btn:not(.previous) {
+    padding: 1em 2em;
+  }
+}
