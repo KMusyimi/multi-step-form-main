@@ -80,22 +80,52 @@ li {
 a {
   color: inherit;
 }
+.d-flx {
+  display: flex;
+}
+
+.d-flx--center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.d-flx.row {
+  flex-direction: row;
+}
+.d-flx.col {
+  flex-direction: column;
+}
+
+.d-flx.ali-c {
+  align-items: center;
+}
+
+.d-flx.jc-c {
+  justify-content: center;
+}
+
+.ps-rel {
+  position: relative;
+}
+
+.ps-abs {
+  position: absolute;
+}
+.ps-fxd {
+  position: fixed;
+}
 
 .container {
-  display: flex;
   height: 100dvh;
   width: 100dvw;
   background-color: var(--magnolia);
 }
 
-.form_container {
-  position: relative;
-}
 .form_container:has(.step.active:nth-of-type(1)) .previous {
   display: none;
 }
+
 .form_container .form_sidebar {
-  position: relative;
   background-image: url(assets/images/bg-sidebar-mobile.svg);
   background-size: cover;
   height: 47vmin;
@@ -103,20 +133,11 @@ a {
 }
 
 .form_sidebar .steps_list {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   width: 100%;
   top: 10vmin;
   gap: 1.25em;
 }
 .form_sidebar .steps_list li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   text-align: center;
   font-size: 0.85rem;
 }
@@ -153,48 +174,17 @@ a {
   border-radius: 0.65em;
   box-shadow: 0px 2px 3px var(--light-gray);
 }
-
-.form:has(> .step.active:last-of-type) {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-/* TODO: later */
-.form .step {
-  display: none;
-  opacity: 0;
-  transform: translateX(150px);
-  animation: move 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 100ms;
-}
-
-.form .step.active {
-  display: block;
-}
-.form label,
-.form input {
-  display: block;
-  width: 100%;
-}
 .form label {
   font-size: 0.8rem;
 }
-.form label:has(> .error_state) {
-  display: flex;
-  justify-content: space-between;
-}
-.form label:has(> .error_state) + input {
-  border-color: var(--strawberry-red);
-}
-.form label:has(> .error_state) + input:focus-visible {
-  outline: 1.2px solid var(--strawberry-red);
-  box-shadow: 1px 1px 3px var(--strawberry-red);
-}
+
 .form input,
 .form label > .error_state {
   font-family: 'Ubuntu medium', sans-serif;
 }
 
 .form label > .error_state {
+  font-size: 0.75rem;
   color: var(--strawberry-red);
 }
 
@@ -202,24 +192,59 @@ a {
   text-transform: capitalize;
 }
 
-.form input {
-  font-size: 0.9rem;
-  color: var(--marine-blue);
-  border: 1.25px solid var(--light-gray);
-  padding: 0.75em 0.9em;
-  border-radius: 0.25em;
-  margin-bottom: 0.85em;
-}
 .form input::placeholder {
   text-transform: lowercase;
   color: var(--gray);
 }
 
 .form input:focus-visible {
-  outline: 1.25px solid var(--purplish-blue);
-  box-shadow: 1px 1px 3px var(--purplish-blue);
+  outline: 1.2px solid var(--purplish-blue);
+  box-shadow: 1px 1.5px 3px var(--purplish-blue);
   border: transparent;
-  transition: outline 100ms ease-out;
+  transition: outline 100ms ease-out, box-shadow 100ms linear;
+}
+
+/* TODO: later */
+.form .step {
+  display: none;
+  transform: translateX(100%);
+}
+.form .step.active {
+  display: block;
+  opacity: 0;
+  animation: move-center 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards
+    100ms;
+}
+.form .step:first-of-type label:not(.switch),
+.form .step:first-of-type input {
+  display: block;
+  width: 98%;
+  margin: 0 auto;
+}
+.form #step1 label:has(> .error_state) {
+  display: flex;
+  justify-content: space-between;
+}
+.form #step1 label:has(> .error_state) + input {
+  border-color: var(--strawberry-red);
+}
+.form #step1 label:has(> .error_state) + input:focus-visible {
+  outline: 1.2px solid var(--strawberry-red);
+  box-shadow: 0.5px 0.5px 2.5px var(--strawberry-red);
+}
+
+.form #step1 input {
+  font-size: 0.9rem;
+  color: var(--marine-blue);
+  border: 1.2px solid var(--light-gray);
+  padding: 0.75em 0.9em;
+  border-radius: 0.25em;
+  margin-bottom: 0.85em;
+}
+
+
+.form:has(> .step:nth-of-type(4).active) ~ .btn_wrapper .btn:not(.previous) {
+  background-color: var(--purplish-blue);
 }
 .form .step .form_header h1 {
   font-size: 1.55rem;
@@ -233,17 +258,14 @@ a {
 .form .step .input_wrapper,
 .form .step .input_wrapper:not(:checked) {
   user-select: none;
-  scale: 1;
   border: 1.2px solid var(--light-gray);
   border-radius: 0.55em;
   margin-bottom: 0.65em;
-  transition: scale 150ms ease-in;
 }
 
 .form .step .input_wrapper:has(:checked),
 .form .step .input_wrapper:hover {
   border-color: var(--purplish-blue);
-  scale: 1.011;
 }
 .form .step .input_wrapper:has(:checked) {
   background-color: var(--magnolia);
@@ -261,13 +283,11 @@ a {
   height: 35px;
 }
 .form .step .input_wrapper > label {
-  display: flex;
-  align-items: center;
   cursor: pointer;
 
   padding: 0.85em;
   height: fit-content;
-  gap: 0.85em;
+  gap: 0.95em;
 }
 .form .step .input_wrapper:nth-of-type(1) > label {
   --url: url(assets/images/icon-arcade.svg);
@@ -280,7 +300,6 @@ a {
 }
 .form .step .input_wrapper .form-radio {
   width: 0;
-  position: absolute;
   visibility: hidden;
   appearance: none;
   outline: transparent;
@@ -293,7 +312,6 @@ a {
 .form .step .input_wrapper > label .free_trial {
   display: block;
   font-size: 0.75rem;
-  animation: fade-in 150ms linear;
 }
 
 .form .step .input_wrapper input {
@@ -304,17 +322,14 @@ a {
 }
 .form .step .switch_wrapper {
   background-color: var(--magnolia);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 0.6em;
   margin-bottom: 0.85em;
 }
 .form .step .switch_wrapper > span {
   font-family: 'Ubuntu medium', sans-serif;
-
   font-size: 0.85rem;
 }
+
 .form .switch_wrapper:has(.switch_input:not(:checked)) > span:nth-of-type(2),
 .form .switch_wrapper:has(.switch_input:checked) > span:nth-of-type(1) {
   color: var(--cool-gray);
@@ -325,12 +340,13 @@ a {
   user-select: none;
 }
 
-.form .step .switch .switch_input {
+.form .step .switch > .switch_input {
   background-color: var(--marine-blue);
 
   appearance: none;
   outline: transparent;
-  width: 2.95em;
+  width: 3.95em;
+  height: 1.85em;
   border-radius: 1.6em;
   border: none;
   margin: 0 auto;
@@ -342,27 +358,25 @@ a {
   content: '';
   height: 100%;
   width: 100%;
-  transform: translate3d(calc(-2.75em / 2), 0, 0);
+  transform: translate3d(calc(-3.95em / 2), 0, 0);
   border-radius: inherit;
   transition: transform 120ms linear;
 }
 .form .step .switch .switch_inner {
-  position: absolute;
   top: 3px;
-  left: calc((100% - (2.95em - 5px)) / 2);
+  left: calc((100% - (3.95em - 6px)) / 2);
 
   height: calc(100% - 6px);
-  width: calc(2.95em - 5px);
+  width: calc(3.95em - 5px);
 
   overflow: hidden;
   border-radius: 1.25em;
 }
 .form .step .switch_input:checked ~ .switch_inner::before {
-  transform: translate3d(calc(2.75em / 2), 0, 0);
+  transform: translate3d(calc(3.95em / 2), 0, 0);
 }
 
 .form .step:nth-of-type(3) .input_wrapper {
-  display: flex;
   gap: 1em;
   padding-inline-start: 0.85em;
 }
@@ -379,8 +393,8 @@ a {
   display: none;
 }
 .form .step:nth-of-type(3) .input_wrapper label {
-  display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 .form .step:nth-of-type(3) .input_wrapper label h5 {
   font-size: 0.9rem;
@@ -392,12 +406,9 @@ a {
 .form .step:nth-of-type(3) .input_wrapper label span {
   color: var(--purplish-blue);
 }
-.form:has(> .step:nth-of-type(4).active) ~ .btn_wrapper .btn:not(.previous) {
-  background-color: var(--purplish-blue);
-}
 
 .form .step .table_wrapper table {
-  padding: 0.55em 0.85em;
+  padding: 0.85em 1em;
   width: 100%;
 }
 .form .step .table_wrapper table:first-of-type {
@@ -407,9 +418,7 @@ a {
 }
 
 .form .step .table_wrapper table:first-of-type tr {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
   margin-bottom: 0.35em;
 }
 .form .step .table_wrapper table:first-of-type tr:last-child {
@@ -478,10 +487,13 @@ a {
   background-image: url(assets/images/icon-thank-you.svg);
   background-size: cover;
   width: 50px;
+  opacity: 0;
   height: 50px;
   margin: 0 auto 0.8em;
 }
-
+.form .step.active:last-of-type::before {
+  animation: fade-in 150ms linear forwards 650ms;
+}
 .form .step:last-of-type h1 {
   margin-bottom: 0.35em;
 }
@@ -491,12 +503,11 @@ a {
   color: var(--cool-gray);
 }
 .form:has(> .step:last-of-type.active) ~ .btn_wrapper {
-  display: none;
+  animation: move-btn 450ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 100ms
+    forwards;
 }
 .btn_wrapper {
-  display: flex;
   justify-content: space-between;
-  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -520,6 +531,9 @@ a {
 }
 
 @media only screen and (min-width: 600px) {
+  .d-gd {
+    display: grid;
+  }
   .form_container .form_sidebar {
     height: 55vmin;
   }
@@ -552,6 +566,12 @@ a {
     padding: 2.5em 1.95em;
   }
 
+  .form .input_container {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-rows: minmax(125px, 1fr);
+    gap: 2.5em;
+    margin-bottom: 1em;
+  }
   .form .step > header {
     margin-bottom: 0.5em;
   }
@@ -567,16 +587,8 @@ a {
   .form #step1 input:last-child {
     margin-bottom: 0;
   }
-  .form .input_container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    grid-template-rows: minmax(125px, 1fr);
-    gap: .85em;
-    margin-bottom: 1em;
-  }
   .form .step:nth-of-type(2) .input_wrapper {
-    height: 10em;
-    max-width: 8em;
+    height: 11em;
   }
   .form .step:nth-of-type(2) .input_wrapper > label::before {
     width: 45px;
@@ -596,18 +608,18 @@ a {
   }
 
   .form .step:nth-of-type(3) .input_wrapper {
-    padding-inline-start: 1.55em;
+    padding-inline-start: 2em;
     margin-bottom: 0.95em;
   }
   .form .step:nth-of-type(3) .input_wrapper:last-of-type {
     margin-bottom: 0;
   }
   .form .step:nth-of-type(3) .input_wrapper > label {
-    padding: 1.35em 1.55em;
+    padding: 1.55em 2em;
   }
 
   .form .step .table_wrapper table:first-of-type {
-    margin-bottom: 1.25em;
+    margin-bottom: 0.65em;
   }
   .form .step .table_wrapper table:first-of-type tr {
     margin-bottom: 0.85em;
@@ -619,12 +631,6 @@ a {
   .form .step .table_wrapper table .row-main .amt {
     font-size: 0.95rem;
   }
-  .form .step .table_wrapper table th footer,
-  .form .step .table_wrapper table td:not(.amt),
-  .form .step .table_wrapper table td.amt,
-  .form .step .table_wrapper table .row-main th h5 {
-    font-size: 0.85rem;
-  }
 
   .form .step .table_wrapper table:first-of-type .sub_plan {
     margin-bottom: 0.35em;
@@ -635,10 +641,8 @@ a {
   }
 
   .form .step:last-of-type::before {
-    width: 60px;
-    height: 60px;
-    width: 9vmin;
-    height: 9vmin;
+    width: 65px;
+    height: 65px;
     margin: 0 auto 1.5em;
   }
   .form .step:last-of-type {
@@ -651,6 +655,9 @@ a {
   .form .step:last-of-type > p:nth-child(2) {
     margin: 0 auto;
   }
+  .btn_wrapper {
+    padding: 1em 2.5em;
+  }
 }
 @media only screen and (min-width: 1080px) {
   .container {
@@ -660,7 +667,6 @@ a {
   .form_container {
     padding: 0.8em;
     background-color: var(--white);
-    display: grid;
     grid-template-columns: 275px minmax(600px, 1fr);
     grid-template-rows: minmax(455px, 2fr) 80px;
     height: fit-content;
@@ -670,9 +676,10 @@ a {
   }
   .form_container form,
   .form_container form + div {
-    width: 75%;
+    width: 77%;
     align-self: center;
     justify-self: center;
+    background-color: transparent;
   }
   .form_container .form_sidebar {
     background-image: url(assets/images/bg-sidebar-desktop.svg);
@@ -716,16 +723,21 @@ a {
     grid-column: 2 / span 1;
     grid-row: 1 / span 1;
   }
-  .form .step{
-    width: 95%;
-    margin: 0 auto;
+  .form .input_container {
+    gap: 1em;
   }
- 
+  .form .step .switch_wrapper {
+    margin-bottom: 0em;
+  }
   .form .step .form_header h1 {
     margin-bottom: 0.15em;
   }
   .form .step .form_header p {
     margin-bottom: 1.8em;
+  }
+
+  .form .step:nth-of-type(3) .input_wrapper > label {
+    padding: 1.35em 1.85em;
   }
   .form .step table .row-main th .change:hover {
     color: var(--purplish-blue);
@@ -734,7 +746,7 @@ a {
     padding: 0;
   }
   .btn_wrapper {
-    padding-inline: 0.65em;
+    padding-inline: 0.25em;
     position: static;
     grid-column: 2 / span 1;
     grid-row: 2 / span 1;
@@ -745,19 +757,23 @@ a {
 }
 
 @keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  80%,
-  100% {
+  to {
     opacity: 1;
   }
 }
 
-@keyframes move {
-  90%,
+@keyframes move-center {
   to {
     opacity: 1;
-    transform: translateX(0px);
+    transform: translateX(0%);
+  }
+}
+
+@keyframes move-btn {
+  80%,
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(50%);
   }
 }

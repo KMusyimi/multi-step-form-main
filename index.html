@@ -25,33 +25,33 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="form_container">
+  <div class="container d-flx">
+    <div class="form_container ps-rel d-gd">
       <!-- Sidebar start -->
-      <aside class="form_sidebar">
-        <ul class="steps_list">
-          <li class="active">
+      <aside class="form_sidebar ps-rel">
+        <ul class="steps_list ps-abs d-flx--center">
+          <li class="active d-flx--center">
             <span>1</span>
             <hgroup>
               <h1>Step 1</h1>
               <h4>Your info</h4>
             </hgroup>
           </li>
-          <li>
+          <li class="d-flx--center">
             <span>2</span>
             <hgroup>
               <h1>Step 2</h1>
               <h4>Select plan</h4>
             </hgroup>
           </li>
-          <li>
+          <li class="d-flx--center">
             <span>3</span>
             <hgroup>
               <h1>Step 3</h1>
               <h4>Add-ons</h4>
             </hgroup>
           </li>
-          <li>
+          <li class="d-flx--center">
             <span>4</span>
             <hgroup>
               <h1>Step 4</h1>
@@ -85,47 +85,47 @@
             <h1>Select your plan</h1>
             <p>You have the option of monthly or yearly billing.</p>
           </header>
-          <div class="input_container">
+          <div class="input_container d-gd">
 
             <div class="input_wrapper">
-              <label for="arcade">
-                <input type="radio" name="sub_plan" id="arcade" class="form-radio" value="Arcade" checked>
+              <label for="arcade" class="d-flx ali-c">
+                <input type="radio" name="sub_plan" id="arcade" class="form-radio ps-abs" value="Arcade" checked>
                 <section class="plan">
                   <h5>Arcade</h5>
                   <!-- TODO: edit later -->
-                  <p class="price price_arcade">$9/mo</p>
+                  <p class="price price_arcade"></p>
                 </section>
 
               </label>
             </div>
 
             <div class="input_wrapper">
-              <label for="advanced">
-                <input type="radio" name="sub_plan" id="advanced" class="form-radio" value="Advanced">
+              <label for="advanced" class="d-flx ali-c">
+                <input type="radio" name="sub_plan" id="advanced" class="form-radio ps-abs" value="Advanced">
                 <section class="plan">
                   <h5>Advanced</h5>
-                  <p class="price price_advance">$12/mo</p>
+                  <p class="price price_advance"></p>
                 </section>
 
               </label>
             </div>
 
             <div class="input_wrapper">
-              <label for="pro">
-                <input type="radio" name="sub_plan" id="pro" class="form-radio" value="Pro">
+              <label for="pro" class="d-flx ali-c">
+                <input type="radio" name="sub_plan" id="pro" class="form-radio ps-abs" value="Pro">
                 <section class="plan">
                   <h5>Pro</h5>
-                  <p class="price price_pro">$15/mo</p>
+                  <p class="price price_pro"></p>
                 </section>
               </label>
             </div>
           </div>
 
-          <div class="switch_wrapper">
+          <div class="switch_wrapper d-flx--center">
             <span class="monthly">Monthly</span>
             <label class="switch">
               <input type="checkbox" id="period" name="period" class="switch_input">
-              <span class="switch_inner"></span>
+              <span class="switch_inner ps-abs"></span>
             </label>
             <span class="yearly">Yearly</span>
           </div>
@@ -140,43 +140,43 @@
             <h1>Pick add-ons </h1>
             <p>Add-ons help enhance your gaming experience.</p>
           </header>
-          <div class="input_wrapper">
+          <div class="input_wrapper d-flx">
             <input type="checkbox" name="online_service" id="online_service" class="form-checkbox"
               value="online_service">
-            <label for="online_service">
+            <label for="online_service"class="d-flx ali-c">
               <main>
                 <h5> Online service</h5>
                 <p class="info"> Access to multiplayer games </p>
               </main>
               <footer>
-                <span class="price_add_ons">+$1/mo</span>
+                <span class="price_add_ons"></span>
               </footer>
             </label>
           </div>
 
-          <div class="input_wrapper">
+          <div class="input_wrapper d-flx">
             <input type="checkbox" name="large_storage" id="large_storage" class="form-checkbox" value="large_storage">
-            <label for="large_storage">
+            <label for="large_storage"class="d-flx ali-c">
               <main>
                 <h5>Larger storage</h5>
                 <p class="info"> Extra 1TB of cloud save </p>
               </main>
               <footer>
-                <span class="price_add_ons">+$2/mo</span>
+                <span class="price_add_ons"></span>
               </footer>
             </label>
           </div>
 
-          <div class="input_wrapper">
+          <div class="input_wrapper d-flx">
             <input type="checkbox" name="customizable_profile" id="customizable_profile" class="form-checkbox"
               value="customizable_profile">
-            <label for="customizable_profile">
+            <label for="customizable_profile"class="d-flx ali-c">
               <main>
-                <h5> Customizable Profile </h5>
+                <h5> Customizable profile </h5>
                 <p class="info"> Custom theme on your profile </p>
               </main>
               <footer>
-                <span class="price_add_ons">+$2/mo</span>
+                <span class="price_add_ons"></span>
               </footer>
             </label>
           </div>
@@ -192,23 +192,15 @@
           <!-- Dynamically add subscription and add-on selections here -->
           <div class="table_wrapper">
             <table>
-              <tbody>
-                <tr class="row row-main">
+              <tbody class="t_body">
+                <tr class="row row-main d-flx ali-c"> 
                   <th class="sub_plan">
-                    <h5>Arcade (<span class="period">Yearly</span>)</h5>
+                    <h5 class="plan">Arcade(<span class="period">Yearly</span>)</h5>
                     <footer>
-                      <a href="#step1" target="_self" rel="noopener noreferrer" class="change">Change</a>
+                      <a href="#step2" target="_self" rel="noopener noreferrer" class="change">Change</a>
                     </footer>
                   </th>
                   <td class="amt">$90/yr</td>
-                </tr>
-                <tr class="row row-sec">
-                  <td class="add-on">Online service</td>
-                  <td class="amt">$10/yr</td>
-                </tr>
-                <tr class="row row-sec">
-                  <td class="add-on">Large storage</td>
-                  <td class="amt">$20/yr</td>
                 </tr>
               </tbody>
             </table>
@@ -235,7 +227,7 @@
         </section>
         <!-- Step 5 end -->
       </form>
-      <div class="btn_wrapper">
+      <div class="btn_wrapper d-flx ps-fxd">
         <button class="btn previous">Go Back</button>
         <button class="btn next">Next Step</button>
       </div>
