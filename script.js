@@ -427,6 +427,7 @@ const hideKeyboard = (el)=>{
         const key = evt.code;
         if (key === "Enter" || key === "Go"){
             console.log('key :>> ', key);
+            el.blur();
             document.querySelector(".flash").style.display = "inline-block";
             setTimeout(() => {
                 document.querySelector(".flash").style.display = "none";
