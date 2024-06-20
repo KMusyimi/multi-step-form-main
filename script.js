@@ -418,6 +418,23 @@ const tableAddOnsData = (function (tbody)
 const errorState = (function (id, errMsg)
 {
     const label = document.querySelector(`#step1 > label[for=${id}]`);
-    label.insertAdjacentHTML("beforeend", `<span class=error_state>${errMsg}</span>`);
+    label.insertAdjacentHTML("beforeend", `<span class="error_state ft-medium">${errMsg}</span>`);
     return false;
 });
+
+const hideKeyboard = (el)=>{
+    el.addEventListener("keyup", evt =>{
+        const key = evt.code;
+        if (key === "Enter"){
+            console.log('key :>> ', key);
+            document.querySelector(".flash").style.display = "inline-block";
+            setTimeout(() => {
+                document.querySelector(".flash").style.display = "none";
+            }, 200);
+        }
+    })
+}
+
+const phn = document.querySelector("#phone_number");
+
+hideKeyboard(phn);

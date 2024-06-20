@@ -31,31 +31,31 @@
       <aside class="form_sidebar ps-rel">
         <ul class="steps_list ps-abs d-flx--center">
           <li class="active d-flx--center">
-            <span>1</span>
+            <span class="ft-bold">1</span>
             <hgroup>
               <h1>Step 1</h1>
-              <h4>Your info</h4>
+              <h4 class="ft-bold">Your info</h4>
             </hgroup>
           </li>
           <li class="d-flx--center">
-            <span>2</span>
+            <span class="ft-bold">2</span>
             <hgroup>
               <h1>Step 2</h1>
-              <h4>Select plan</h4>
+              <h4 class="ft-bold">Select plan</h4>
             </hgroup>
           </li>
           <li class="d-flx--center">
-            <span>3</span>
+            <span class="ft-bold">3</span>
             <hgroup>
               <h1>Step 3</h1>
-              <h4>Add-ons</h4>
+              <h4 class="ft-bold">Add-ons</h4>
             </hgroup>
           </li>
           <li class="d-flx--center">
-            <span>4</span>
+            <span class="ft-bold">4</span>
             <hgroup>
               <h1>Step 4</h1>
-              <h4>Summary</h4>
+              <h4 class="ft-bold">Summary</h4>
             </hgroup>
           </li>
         </ul>
@@ -63,18 +63,18 @@
       <!-- Sidebar end -->
       <form action="#" class="form">
         <!-- Step 1 start -->
-        <!-- TODO: add error state -->
         <section class="step active" id="step1">
           <header class="form_header">
-            <h1> Personal info </h1>
+            <h1 class="ft-bold"> Personal info </h1>
             <p> Please provide your name, email address, and phone number. </p>
           </header>
           <label for="fname">Name </label>
-          <input type="text" id="fname" name="fname" class="form-input" placeholder="e.g. Stephen King">
+          <input type="text" id="fname" name="fname" class="form-input ft-medium" placeholder="e.g. Stephen King">
           <label for="email">Email Address</label>
-          <input type="email" name="email" id="email" class="form-input" placeholder="e.g. stephenking@example.com">
+          <input type="email" name="email" id="email" class="form-input ft-medium" placeholder="e.g. stephenking@example.com" autocomplete="email">
           <label for="phone_number">Phone Number</label>
-          <input type="text" name="phone_number" id="phone_number" class="form-input" placeholder="e.g. +1 234 567 890">
+          <input type="text" name="phone_number" id="phone_number" class="form-input ft-medium" placeholder="e.g. +1 234 567 890">
+          <span class="flash" style="display: none;">Key</span>
         </section>
         <!-- Step 1 end -->
 
@@ -82,7 +82,7 @@
 
         <section class="step " id="step2">
           <header class="form_header">
-            <h1>Select your plan</h1>
+            <h1 class="ft-bold">Select your plan</h1>
             <p>You have the option of monthly or yearly billing.</p>
           </header>
           <div class="input_container d-gd">
@@ -91,8 +91,7 @@
               <label for="arcade" class="d-flx ali-c">
                 <input type="radio" name="sub_plan" id="arcade" class="form-radio ps-abs" value="Arcade" checked>
                 <section class="plan">
-                  <h5>Arcade</h5>
-                  <!-- TODO: edit later -->
+                  <h5  class="ft-medium">Arcade</h5>
                   <p class="price price_arcade"></p>
                 </section>
 
@@ -103,7 +102,7 @@
               <label for="advanced" class="d-flx ali-c">
                 <input type="radio" name="sub_plan" id="advanced" class="form-radio ps-abs" value="Advanced">
                 <section class="plan">
-                  <h5>Advanced</h5>
+                  <h5  class="ft-medium">Advanced</h5>
                   <p class="price price_advance"></p>
                 </section>
 
@@ -114,7 +113,7 @@
               <label for="pro" class="d-flx ali-c">
                 <input type="radio" name="sub_plan" id="pro" class="form-radio ps-abs" value="Pro">
                 <section class="plan">
-                  <h5>Pro</h5>
+                  <h5  class="ft-medium">Pro</h5>
                   <p class="price price_pro"></p>
                 </section>
               </label>
@@ -122,12 +121,12 @@
           </div>
 
           <div class="switch_wrapper d-flx--center">
-            <span class="monthly">Monthly</span>
+            <span class="monthly ft-medium">Monthly</span>
             <label class="switch">
               <input type="checkbox" id="period" name="period" class="switch_input">
               <span class="switch_inner ps-abs"></span>
             </label>
-            <span class="yearly">Yearly</span>
+            <span class="yearly ft-medium">Yearly</span>
           </div>
 
         </section>
@@ -137,7 +136,7 @@
         <!-- Step 3 start -->
         <section class="step" id="step3">
           <header class="form_header">
-            <h1>Pick add-ons </h1>
+            <h1 class="ft-bold">Pick add-ons </h1>
             <p>Add-ons help enhance your gaming experience.</p>
           </header>
           <div class="input_wrapper d-flx">
@@ -145,7 +144,7 @@
               value="online_service">
             <label for="online_service"class="d-flx ali-c">
               <main>
-                <h5> Online service</h5>
+                <h5 class="ft-medium"> Online service</h5>
                 <p class="info"> Access to multiplayer games </p>
               </main>
               <footer>
@@ -158,7 +157,7 @@
             <input type="checkbox" name="large_storage" id="large_storage" class="form-checkbox" value="large_storage">
             <label for="large_storage"class="d-flx ali-c">
               <main>
-                <h5>Larger storage</h5>
+                <h5 class="ft-medium">Larger storage</h5>
                 <p class="info"> Extra 1TB of cloud save </p>
               </main>
               <footer>
@@ -172,7 +171,7 @@
               value="customizable_profile">
             <label for="customizable_profile"class="d-flx ali-c">
               <main>
-                <h5> Customizable profile </h5>
+                <h5 class="ft-medium"> Customizable profile </h5>
                 <p class="info"> Custom theme on your profile </p>
               </main>
               <footer>
@@ -186,21 +185,21 @@
         <!-- Step 4 start -->
         <section class="step" id="step4">
           <header class="form_header">
-            <h1> Finishing up </h1>
+            <h1 class="ft-bold"> Finishing up </h1>
             <p> Double-check everything looks OK before confirming. </p>
           </header>
-          <!-- Dynamically add subscription and add-on selections here -->
+          
           <div class="table_wrapper">
             <table>
               <tbody class="t_body">
                 <tr class="row row-main d-flx ali-c"> 
                   <th class="sub_plan">
-                    <h5 class="plan">Arcade(<span class="period">Yearly</span>)</h5>
+                    <h5 class="plan ft-medium"></h5>
                     <footer>
                       <a href="#step2" target="_self" rel="noopener noreferrer" class="change">Change</a>
                     </footer>
                   </th>
-                  <td class="amt">$90/yr</td>
+                  <td class="amt ft-bold"></td>
                 </tr>
               </tbody>
             </table>
@@ -208,7 +207,7 @@
               <tfoot>
                 <tr class="row row-footer">
                   <td>Total (per <span class="period">year</span>)</td>
-                  <td class="total amt">+$120/yr</td>
+                  <td class="total amt ft-bold"></td>
                 </tr>
               </tfoot>
             </table>
@@ -218,7 +217,7 @@
 
         <!-- Step 5 start -->
         <section class="step" id="step5">
-          <h1> Thank you! </h1>
+          <h1 class="ft-bold"> Thank you! </h1>
           <p>
             Thanks for confirming your subscription! We hope you have fun
             using our platform. If you ever need support, please feel free
@@ -237,9 +236,9 @@
   </div>
   </div>
 
-  <div class="attribution">
+  <div class="attribution ft-medium">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="#">Your Name Here</a>.
+    Coded by <a href="https://github.com/KMusyimi" target="_blank" rel="noreferrer noopener">Kennedy Musyimi</a>.
   </div>
 </body>
 

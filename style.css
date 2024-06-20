@@ -1,12 +1,15 @@
 @font-face {
   font-family: 'Ubuntu';
   src: url(assets/fonts/Ubuntu-Regular.ttf);
+  font-weight: 400;
 }
+
 @font-face {
   font-family: 'Ubuntu medium';
   src: url(assets/fonts/Ubuntu-Medium.ttf);
   font-weight: 500;
 }
+
 @font-face {
   font-family: 'Ubuntu bold';
   src: url(assets/fonts/Ubuntu-Bold.ttf);
@@ -48,11 +51,10 @@ body {
   font-family: 'Ubuntu', system-ui, -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
     sans-serif;
-  font-weight: 400;
   font-style: normal;
 }
-button,
-input {
+
+button{
   display: block;
   font-family: 'Ubuntu', sans-serif;
 }
@@ -70,10 +72,6 @@ label {
   color: var(--marine-blue);
 }
 
-h1 {
-  font-family: 'Ubuntu bold', sans-serif;
-  font-weight: 700;
-}
 li {
   list-style: none;
 }
@@ -115,6 +113,18 @@ a {
   position: fixed;
 }
 
+.ft-bold {
+  font-family: 'Ubuntu bold', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+.ft-medium {
+  font-family: 'Ubuntu medium', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
 .container {
   height: 100dvh;
   width: 100dvw;
@@ -142,7 +152,6 @@ a {
   font-size: 0.85rem;
 }
 .form_sidebar .steps_list li span {
-  font-family: 'Ubuntu bold', sans-serif;
   font-size: 0.9rem;
   background-color: transparent;
   color: var(--white);
@@ -176,11 +185,6 @@ a {
 }
 .form label {
   font-size: 0.8rem;
-}
-
-.form input,
-.form label > .error_state {
-  font-family: 'Ubuntu medium', sans-serif;
 }
 
 .form label > .error_state {
@@ -242,7 +246,6 @@ a {
   margin-bottom: 0.85em;
 }
 
-
 .form:has(> .step:nth-of-type(4).active) ~ .btn_wrapper .btn:not(.previous) {
   background-color: var(--purplish-blue);
 }
@@ -254,6 +257,15 @@ a {
   color: var(--cool-gray);
   font-size: 0.85rem;
   margin-bottom: 0.87em;
+}
+.form .step .input_wrapper > label {
+  cursor: pointer;
+  padding: 0.85em;
+  height: fit-content;
+  gap: 0.95em;
+}
+.form .step .input_wrapper > label h5 {
+  font-size: 0.85rem;
 }
 .form .step .input_wrapper,
 .form .step .input_wrapper:not(:checked) {
@@ -273,7 +285,7 @@ a {
 .form .step:nth-of-type(2) .input_wrapper:nth-of-type(3) {
   margin-bottom: 1.25em;
 }
-.form .step .input_wrapper > label::before {
+.form .step:nth-of-type(2) .input_wrapper > label::before {
   display: block;
   align-self: start;
   content: '';
@@ -282,34 +294,18 @@ a {
   width: 35px;
   height: 35px;
 }
-.form .step .input_wrapper > label {
-  cursor: pointer;
 
-  padding: 0.85em;
-  height: fit-content;
-  gap: 0.95em;
-}
-.form .step .input_wrapper:nth-of-type(1) > label {
+.form .step:nth-of-type(2) .input_wrapper:nth-of-type(1) > label {
   --url: url(assets/images/icon-arcade.svg);
 }
-.form .step .input_wrapper:nth-of-type(2) > label {
+.form .step:nth-of-type(2) .input_wrapper:nth-of-type(2) > label {
   --url: url(assets/images/icon-advanced.svg);
 }
-.form .step .input_wrapper:nth-of-type(3) > label {
+.form .step:nth-of-type(2) .input_wrapper:nth-of-type(3) > label {
   --url: url(assets/images/icon-pro.svg);
 }
-.form .step .input_wrapper .form-radio {
-  width: 0;
-  visibility: hidden;
-  appearance: none;
-  outline: transparent;
-}
-.form .step .input_wrapper > label h5 {
-  font-family: 'Ubuntu medium', sans-serif;
-  font-size: 0.85rem;
-}
 
-.form .step .input_wrapper > label .free_trial {
+.form .step:nth-of-type(2) .input_wrapper > label .free_trial {
   display: block;
   font-size: 0.75rem;
 }
@@ -326,7 +322,6 @@ a {
   margin-bottom: 0.85em;
 }
 .form .step .switch_wrapper > span {
-  font-family: 'Ubuntu medium', sans-serif;
   font-size: 0.85rem;
 }
 
@@ -334,6 +329,14 @@ a {
 .form .switch_wrapper:has(.switch_input:checked) > span:nth-of-type(1) {
   color: var(--cool-gray);
 }
+
+.form .step .input_wrapper .form-radio {
+  width: 0;
+  visibility: hidden;
+  appearance: none;
+  outline: transparent;
+}
+
 .form .step .switch {
   flex: 0 0 100px;
   position: relative;
@@ -341,6 +344,8 @@ a {
 }
 
 .form .step .switch > .switch_input {
+  display: block;
+
   background-color: var(--marine-blue);
 
   appearance: none;
@@ -389,9 +394,7 @@ a {
 .form .step:nth-of-type(3) .input_wrapper .form-checkbox:not(:checked) {
   box-shadow: none;
 }
-.form .step:nth-of-type(3) .input_wrapper label::before {
-  display: none;
-}
+
 .form .step:nth-of-type(3) .input_wrapper label {
   justify-content: space-between;
   width: 100%;
@@ -456,20 +459,9 @@ a {
 }
 
 .form .step .table_wrapper table .row-main th h5 {
-  font-family: 'Ubuntu medium', sans-serif;
   font-size: 0.9rem;
-  font-weight: 500;
-}
-.form .step .table_wrapper table .row-main th footer {
-  font-family: 'Ubuntu', sans-serif;
-  font-weight: 400;
 }
 
-.form .step .table_wrapper table tfoot .amt,
-.form .step .table_wrapper table .row-main .amt {
-  font-family: 'Ubuntu bold', sans-serif;
-  font-weight: 700;
-}
 .form .step .table_wrapper table .row-main .amt {
   font-size: 0.85rem;
 }
@@ -516,6 +508,9 @@ a {
 }
 
 .btn_wrapper .btn {
+  display: block;
+  /* font-family: inherit; */
+
   cursor: pointer;
   background-color: transparent;
   border: none;
@@ -659,7 +654,7 @@ a {
     padding: 1em 2.5em;
   }
 }
-@media only screen and (min-width: 1080px) {
+@media only screen and (min-width: 1024px) {
   .container {
     align-items: center;
     justify-content: center;
@@ -704,13 +699,11 @@ a {
     padding-left: 1em;
   }
   .form_sidebar .steps_list li > hgroup h1 {
-    font-family: 'Ubuntu', sans-serif;
 
     font-size: 0.85rem;
     color: var(--light-gray);
   }
   .form_sidebar .steps_list li > hgroup h4 {
-    font-family: 'Ubuntu bold', sans-serif;
     font-size: 0.9rem;
     color: var(--white);
   }
