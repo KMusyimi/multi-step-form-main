@@ -421,21 +421,3 @@ const errorState = (function (id, errMsg)
     label.insertAdjacentHTML("beforeend", `<span class="error_state ft-medium">${errMsg}</span>`);
     return false;
 });
-// TODO: edit later
-const hideKeyboard = (el)=>{
-    el.addEventListener("keyup", evt =>{
-        const key = evt.code;
-        if (key === "Enter" || key === "Go"){
-            console.log('key :>> ', key);
-            el.blur();
-            document.querySelector(".flash").style.display = "inline-block";
-            setTimeout(() => {
-                document.querySelector(".flash").style.display = "none";
-            }, 200);
-        }
-    })
-}
-
-const phn = document.querySelector("#phone_number");
-
-hideKeyboard(phn);
