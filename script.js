@@ -421,11 +421,11 @@ const errorState = (function (id, errMsg)
     label.insertAdjacentHTML("beforeend", `<span class="error_state ft-medium">${errMsg}</span>`);
     return false;
 });
-
+// TODO: edit later
 const hideKeyboard = (el)=>{
     el.addEventListener("keyup", evt =>{
         const key = evt.code;
-        if (key === "Enter"){
+        if (key === "Enter" || key === "Go"){
             console.log('key :>> ', key);
             document.querySelector(".flash").style.display = "inline-block";
             setTimeout(() => {
